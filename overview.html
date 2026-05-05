@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | Maria Maiorescu Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Internal CSS: one rule specific to the overview page layout -->
+    <style>
+        .featured-card {
+            border-top: 4px solid #d946a8;
+            background: linear-gradient(135deg, #fdf4ff 0%, #ede9fe 100%);
+        }
+    </style>
+
+    <style>
+        /* ---- Overview page layout: CSS Grid ---- */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            grid-template-areas:
+                "profile  profile"
+                "skills   projects"
+                "contact  contact";
+            gap: 20px;
+        }
+
+        .profile-section  { grid-area: profile;  }
+        .skills-section   { grid-area: skills;   }
+        .projects-section { grid-area: projects; }
+        .contact-section  { grid-area: contact;  }
+
+        /* Profile: Flexbox for avatar + text side by side */
+        .profile-inner {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #d946a8;
+            flex-shrink: 0;
+        }
+
+        .profile-text h1 {
+            margin-bottom: 6px;
+        }
+
+        .profile-text p {
+            margin: 0;
+            color: #3b1f6e;
+            font-size: 0.97rem;
+        }
+
+        /* Skills: Flexbox badges */
+        .skills-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .skill-badge {
+            background-color: #ede9fe;
+            color: #5b21b6;
+            border: 1px solid #c4b5fd;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Projects: inner grid for cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            border-left: 3px solid #3b82f6;
+        }
+
+        .project-card h3 {
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+        }
+
+        .project-card p {
+            font-size: 0.875rem;
+            color: #475569;
+            margin: 0;
+        }
+
+        .project-card .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            background-color: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        /* Featured card styled differently (uses internal CSS .featured-card rule) */
+        .completed-card .badge {
+            background-color: #d0ffb3;
+            color: #232223;
+        }
+
+        /* Contact: Flexbox row */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.92rem;
+        }
+
+        .contact-icon {
+            font-size: 1.1rem;
+        }
+
+        /* ---- Media query: single-column on small screens ---- */
+        @media (max-width: 640px) {
+            .overview-grid {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "profile"
+                    "skills"
+                    "projects"
+                    "contact";
+                gap: 16px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-flex {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            nav ul {
+                gap: 2px;
+            }
+
+            nav a {
+                font-size: 0.82rem;
+                padding: 5px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <p class="site-name">Maria Maiorescu</p>
+        <p class="site-tagline">Junior Developer Project Showcase</p>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="data.html">Data</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="overview.html" aria-current="page">Overview</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="chatbot.html">Chatbot</a></li>
+            <li><a href="specificity.html">Specificity</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main-content" class="overview-grid">
+
+        <!-- PROFILE (full width) -->
+        <section class="profile-section">
+            <div class="profile-inner">
+                <img
+                    src="https://ui-avatars.com/api/?name=Maria+Maiorescu&size=100&background=d946a8&color=fff&rounded=true"
+                    alt="Maria Maiorescu profile avatar"
+                    class="profile-avatar"
+                >
+                <div class="profile-text">
+                    <h1>Maria Maiorescu</h1>
+                    <p>
+                        First-year Computer Science student at the West University of Timisoara.
+                        I build console applications in C and C++, enjoy structured problem solving,
+                        and am now exploring web development with HTML, CSS, and JavaScript.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="skills-section">
+            <h2>Skills</h2>
+
+            <div class="skills-flex">
+                <span class="skill-badge">C</span>
+                <span class="skill-badge">C++</span>
+                <span class="skill-badge">HTML</span>
+                <span class="skill-badge">CSS</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">LaTeX</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Problem Solving</span>
+                <span class="skill-badge">Data Structures</span>
+                <span class="skill-badge">Algorithm Analysis</span>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="projects-section">
+            <h2>Projects</h2>
+
+            <div class="projects-grid">
+
+                <!-- Card 1 -->
+                <div class="project-card completed-card">
+                    <span class="badge">Completed</span>
+                    <h3>Dive Log</h3>
+                    <p>C++ console application for managing scuba dive records, importing CSV data, and generating statistics.</p>
+                </div> 
+
+                <!-- Card 2 -->
+                <div class="project-card completed-card">
+                    <span class="badge">Completed</span>
+                    <h3>Bakery Management</h3>
+                    <p>Product and inventory management application showcasing structured data handling in C++.</p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="project-card">
+                    <span class="badge">In Progress</span>
+                    <h3>Sorting Algorithms</h3>
+                    <p>Performance comparison of sorting algorithms in C, with a LaTeX research paper on complexity.</p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="project-card">
+                    <span class="badge">In Progress</span>
+                    <h3>Parking Payment System</h3>
+                    <p>Interactive C application with zone selection, payment calculation, and parking history.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section">
+            <h2>Contact Details</h2>
+
+            <div class="contact-flex">
+                <div class="contact-item">
+                    <a href="mailto:maria.maiorescu06@e-uvt.ro">maria.maiorescu06@e-uvt.ro</a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://github.com/maria-maiorescu" target="_blank" rel="noopener noreferrer">github.com/maria-maiorescu</a>
+                </div>
+                <div class="contact-item">
+                    <span>West University of Timisoara, CS Year 1</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Maria Maiorescu | Web Design Mini-Project</p>
+    </footer>
+
+</body>
+</html>

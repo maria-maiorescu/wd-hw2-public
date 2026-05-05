@@ -1,0 +1,102 @@
+CSS Specificity Exercise
+========================
+Maria Maiorescu
+
+The HTML has four paragraphs. The CSS rules and their specificities are:
+  p             (0,0,1)
+  .info         (0,1,0)
+  #warning      (1,0,0)
+  #warning.info (1,1,0)
+
+------------------------------------------------------------
+QUESTION 1 - Properties each paragraph receives
+------------------------------------------------------------
+
+PARAGRAPH A  <p>
+Only the p rule matches.
+  color: gray
+  font-size: 1rem
+  font-family: Georgia, serif
+  line-height: 1.4
+  padding: 4px 0
+All properties come from the p element selector.
+
+PARAGRAPH B  <p class="info">
+Both p and .info match. .info has higher specificity so it 
+overrides p where both define the same property.
+  color: steelblue          from .info
+  font-size: 1.25rem        from .info
+  font-family: Arial        from .info
+  background-color: #e8f4fd from .info
+  padding: 8px 14px         from .info
+  border-left: 5px solid    from .info
+  line-height: 1.4          from p 
+
+PARAGRAPH C  <p id="warning">
+Both p and #warning match. #warning wins.
+  color: darkred                 from #warning
+  font-size: 0.8rem              from #warning
+  font-family: Courier New       from #warning
+  font-style: italic             from #warning
+  text-transform: uppercase      from #warning
+  letter-spacing: 0.15em        from #warning
+  border: 2px dashed darkred     from #warning
+  padding: 10px                  from #warning
+  background-color: #fff0f0      from #warning
+  line-height: 1.4               from p
+
+PARAGRAPH D  <p class="info" id="warning">
+All four rules match. #warning.info is the strongest.
+  color: darkorange              from #warning.info
+  font-size: 1.1rem              from #warning.info
+  background-color: #fff7e0      from #warning.info
+  border: 2px solid darkorange   from #warning.info
+  font-style: normal             from #warning.info
+  letter-spacing: 0.03em         from #warning.info
+  font-family: Courier New       from #warning (not set in #warning.info)
+  text-transform: uppercase      from #warning (not set in #warning.info)
+  padding: 10px                  from #warning (not set in #warning.info)
+  line-height: 1.4               from p
+
+------------------------------------------------------------
+QUESTION 2 - Paragraph D: color and font-family
+------------------------------------------------------------
+
+COLOR:
+Four rules define color: p=gray, .info=steelblue, #warning=darkred,
+#warning.info=darkorange.
+The browser picks darkorange from #warning.info because it has the
+highest specificity. The ID+class combination beats an ID
+alone, a class alone, or an element selector.
+
+FONT-FAMILY:
+Only p, .info, and #warning define font-family. #warning.info does not.
+So #warning.info cannot affect this property at all.
+Among the three rules that do define it, #warning has the highest
+specificity, so the browser uses Courier New.
+
+------------------------------------------------------------
+QUESTION 3 - External vs. internal CSS for h1
+------------------------------------------------------------
+
+I created specificity.css with:
+  h1 {
+      color: darkslateblue;
+      font-style: italic;
+      padding: 10px;
+  }
+
+I linked it in the HTML head with a <link> tag and added <h1>title1</h1>
+in the body. The heading showed up in darkslateblue, italic, with 10px
+padding. All three properties came from the external file.
+
+Then I added this inside a <style> tag in the same <head>:
+  h1 { color: crimson; }
+
+The heading color changed to crimson. The italic and padding stayed.
+
+Why: both rules use the h1 selector, so both have same specificity.
+When specificity is equal, the rule that comes later in the document wins.
+The <style> block comes after the <link> tag, so its color value wins.
+Font-style and padding are not touched by the internal rule, so they
+still come from the external file.

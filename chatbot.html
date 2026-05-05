@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot | Maria Maiorescu Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <p class="site-name">Maria Maiorescu</p>
+        <p class="site-tagline">Junior Developer Project Showcase</p>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav aria-label="Main navigation">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="data.html">Data</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="overview.html">Overview</a></li>
+            <li><a href="card.html">Card</a></li>
+            <li><a href="chatbot.html" aria-current="page">Chatbot</a></li>
+            <li><a href="specificity.html">Specificity</a></li>
+        </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main-content">
+
+        <section>
+            <h1>Diving Q&amp;A Chatbot</h1>
+            <p>Ask me anything about scuba diving! Type a keyword and I will answer.</p>
+            <p><strong>Questions you can ask:</strong></p>
+            <ol>
+                <li>What is scuba diving? &rarr; type <em>diving</em></li>
+                <li>What equipment do I need? &rarr; type <em>equipment</em></li>
+                <li>How deep can I dive? &rarr; type <em>depth</em></li>
+                <li>How do I get certified? &rarr; type <em>certification</em></li>
+                <li>What is decompression sickness? &rarr; type <em>decompression</em></li>
+            </ol>
+            <p>Type <strong>help</strong> to see the full topic list.</p>
+        </section>
+
+        <!-- CHAT INTERFACE -->
+        <section class="chat-section">
+            <h2>Chat</h2>
+
+            <!-- Chat display -->
+            <div id="chat-display" class="chat-display" aria-live="polite">
+                <div class="message message--bot">
+                    <span class="message-label">Bot</span>
+                    <p>Hello! I am your diving assistant. Ask me about scuba diving, equipment, depth limits, certification, or decompression sickness. Type <strong>help</strong> for all topics.</p>
+                </div>
+            </div>
+
+            <!-- Input form -->
+            <form id="chat-form" class="chat-form" novalidate>
+                <label for="chat-input" class="visually-hidden">Your message</label>
+                <input
+                    type="text"
+                    id="chat-input"
+                    class="chat-input"
+                    placeholder="Type your question here&hellip;"
+                    autocomplete="off"
+                    required
+                >
+                <button type="submit" class="chat-submit">Send</button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Maria Maiorescu | Web Design Mini-Project</p>
+    </footer>
+
+    <script src="chatbot.js"></script>
+</body>
+</html>

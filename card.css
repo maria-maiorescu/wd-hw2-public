@@ -1,0 +1,100 @@
+/* card.css */
+
+/* element selector: body (sets page background for this page via cascade) */
+body {
+    background-color: #f5f3ff;
+}
+
+/* class selector: wrapper centres the card on the page */
+.card-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 32px 20px;
+}
+
+/* class selector: the card container */
+.card {
+    background: linear-gradient(145deg, #ffffff 0%, #fdf4ff 100%);
+    border: 1px solid #e9d5ff;
+    border-top: 4px solid #d946a8;
+    border-radius: 12px;
+    padding: 40px 48px;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+    box-shadow: 0 4px 24px rgba(124, 58, 237, 0.12);
+}
+
+/* element selector: img */
+img.card-avatar {
+    display: block;
+    margin: 0 auto 20px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* ID selector: #profile-name */
+#profile-name {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #5b0a3c;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+}
+
+/* class selectors for text beneath the name */
+.card-role {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #a21caf;
+    margin: 0 0 4px 0;
+}
+
+.card-university {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin: 0 0 24px 0;
+}
+
+/* class selector: links container */
+.card-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* element selector: a */
+.card a {
+    text-decoration: none;
+}
+
+/* class selector: shared card link style */
+.card-link {
+    display: block;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: opacity 0.2s ease, transform 0.15s ease;
+}
+
+.card-link:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* modifier class: email link */
+.card-link--email {
+    background-color: #d946a8;
+    color: #ffffff;
+    border: 1px solid #be185d;
+}
+
+/* modifier class: github link */
+.card-link--github {
+    background-color: #1e1b4b;
+    color: #e0e7ff;
+    border: 1px solid #312e81;
+}
